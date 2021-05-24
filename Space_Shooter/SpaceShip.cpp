@@ -9,8 +9,10 @@ SpaceShip::SpaceShip(sf::Vector2f& position_) :position(position_){
 	else
 		std::cout << "Poprawne wczytanie pliku" << std::endl;
 	auto textureSize = this->spaceship_texture.getSize();
+	this->spaceship_texture.setSmooth(true);
 	this->setTexture(spaceship_texture);
-	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2); //Set Origin to middle of sprite
+	this->setScale(1.5, 1.5);
+	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);//Set Origin to middle of sprite
 	std::cout <<"Size x:"<< spaceship_texture.getSize().x <<" Size y:"<< spaceship_texture.getSize().y << std::endl;
 }
 
