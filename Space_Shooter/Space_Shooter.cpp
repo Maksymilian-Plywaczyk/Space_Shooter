@@ -14,12 +14,14 @@ int main()
     Map map1(position_map);
     std::vector<Bullet*>bullets;
     bool isShooting = false;
+    int shootTime = 0;
+
     
     window.setFramerateLimit(60);
     sf::Clock clock;
     while (window.isOpen())
     {
-
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -30,25 +32,31 @@ int main()
         spaceship.SpaceShip_animate(elapsed);
         window.clear();
         window.draw(map1);
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (shootTime < 15)
+            shootTime++;
+        std::cout << shootTime << std::endl;
+        
+        
+        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)&&shootTime>=15)
         {
             isShooting = true;
+            shootTime = 0;
         }
         if (isShooting == true) {
-           
-            bullets.push_back(new Bullet(spaceship.getPosition().x+spaceship.getBounds().width,spaceship.getPosition().y
-                    +spaceship.getBounds().height));
+
+            bullets.push_back(new Bullet(spaceship.getPosition()));
             isShooting = false;
-      }
+        }
         for (int i = 0; i < bullets.size(); ++i)
         {
             bullets[i]->bullet_draw(window);
             bullets[i]->bullet_shooting();
-            
         }
+
         spaceship.SpaceShip_draw(window);
-     
-        
+    
+
         window.display();
     }
 
