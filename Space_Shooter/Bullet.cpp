@@ -1,8 +1,8 @@
 #include "Bullet.h"
 
-Bullet::Bullet(float posx,float posy)
+Bullet::Bullet(sf::Vector2f position_):position(position_)
 {
-	bullet.setPosition(sf::Vector2f(posx,posy));
+	
 	if (!this->bullet_texture.loadFromFile("textures/bullets.png"))
 	{
 		std::cout << "Tekstury pociskow zaladowane nie poprawnie" << std::endl;
@@ -10,7 +10,9 @@ Bullet::Bullet(float posx,float posy)
 	else
 		std::cout << "Tekstury pociskow zaladowane poprawnie" << std::endl;
 	bullet.setTexture(bullet_texture);
-
+	bullet.setOrigin(bullet.getGlobalBounds().width / 2, bullet.getGlobalBounds().height / 2);
+	bullet.setPosition(position);
+	std::cout <<"BULLET"<< bullet.getPosition().x <<" "<< bullet.getPosition().y << std::endl;
 }
 
 void Bullet::bullet_draw(sf::RenderWindow& window)

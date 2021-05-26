@@ -13,9 +13,9 @@ class Bullet
 		sf::Texture bullet_texture;
 		sf::Vector2f position;
 		std::vector<Bullet>bullets;
-
+		
 	public:
-	Bullet(float posx,float posy);
+	Bullet(sf::Vector2f position_);
 	void bullet_draw(sf::RenderWindow& window);
 	void bullet_shooting ();
 	
