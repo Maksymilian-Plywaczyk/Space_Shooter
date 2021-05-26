@@ -7,14 +7,14 @@ int main()
     const unsigned int width = 1000;
     const unsigned int height = 1000;
     sf::RenderWindow window(sf::VideoMode(width, height), "SpaceShooter");
-    sf::Vector2f position(width/2,height-23);
+    sf::Vector2f position(width/2,height-42);
     sf::Vector2f position_map(0,0);
     sf::Vector2f position_bullet(200, 200);
     SpaceShip spaceship(position);
     Map map1(position_map);
     std::vector<Bullet*>bullets;
     bool isShooting = false;
-    int shootTime = 0;
+    int shootTime = 20;
 
     
     window.setFramerateLimit(60);
@@ -29,14 +29,12 @@ int main()
                 window.close();
         }
         sf::Time elapsed = clock.restart();
+        
         spaceship.SpaceShip_animate(elapsed);
         window.clear();
         window.draw(map1);
         if (shootTime < 15)
             shootTime++;
-        std::cout << shootTime << std::endl;
-        
-        
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)&&shootTime>=15)
         {
