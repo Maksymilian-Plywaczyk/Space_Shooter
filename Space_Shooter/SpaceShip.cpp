@@ -13,7 +13,6 @@ SpaceShip::SpaceShip(sf::Vector2f position_) :position( position_){
 	this->spaceship_texture.setSmooth(true);
 	ship.setTexture(spaceship_texture);
 	ship.setOrigin(ship.getGlobalBounds().width / 2, ship.getGlobalBounds().height / 2);
-	ship.setScale(1.5, 1.5);
 
 	std::cout <<"Origin x: "<< ship.getOrigin().x<<"Origin y:"<< ship.getOrigin().y << std::endl;
 	ship.setPosition(position_);
