@@ -7,10 +7,10 @@ int main()
     const unsigned int width = 1000;
     const unsigned int height = 1000;
     sf::RenderWindow window(sf::VideoMode(width, height), "SpaceShooter");
-    sf::Vector2f position(width/2,height-42);
+    
     sf::Vector2f position_map(0,0);
     sf::Vector2f position_bullet(200, 200);
-    SpaceShip spaceship(position);
+    SpaceShip spaceship(sf::Vector2f(width/2,height-42));
     Map map1(position_map);
     std::vector<Bullet*>bullets;
     bool isShooting = false;
