@@ -1,6 +1,7 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "SpaceShip.h"
 #include "Map.h"
+#include "Bullet.h"
 
 int main()
 {
@@ -12,11 +13,8 @@ int main()
     sf::Vector2f position_bullet(200, 200);
     SpaceShip spaceship(sf::Vector2f(width/2,height-42));
     Map map1(position_map);
-    std::vector<Bullet*>bullets;
-    bool isShooting = false;
-    int shootTime = 20;
-
-    
+    Bullet bullet(sf::Vector2f(1000, 1000));
+  
     window.setFramerateLimit(60);
     sf::Clock clock;
     while (window.isOpen())
@@ -33,25 +31,8 @@ int main()
         spaceship.SpaceShip_animate(elapsed);
         window.clear();
         window.draw(map1);
-        if (shootTime < 15)
-            shootTime++;
-        
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)&&shootTime>=15)
-        {
-            isShooting = true;
-            shootTime = 0;
-        }
-        if (isShooting == true) {
 
-            bullets.push_back(new Bullet(spaceship.getPosition()));
-            isShooting = false;
-        }
-        for (int i = 0; i < bullets.size(); ++i)
-        {
-            bullets[i]->bullet_draw(window);
-            bullets[i]->bullet_shooting();
-        }
-
+        bullet.player_shooting(window, spaceship);
         spaceship.SpaceShip_draw(window);
     
 
