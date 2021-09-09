@@ -25,6 +25,29 @@ void Bullet::bullet_shooting()
 	bullet.move(0, -speed_bullet);
 }
 
+void Bullet::player_shooting(sf::RenderWindow& window,SpaceShip spaceship)
+{
+    if (shootTime < 15)
+        shootTime++;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && shootTime >= 15)
+    {
+        isShooting = true;
+        shootTime = 0;
+    }
+    if (isShooting == true) {
+
+        bullets.push_back(new Bullet(spaceship.getPosition()));
+        isShooting = false;
+    }
+    for (int i = 0; i < bullets.size(); ++i)
+    {
+        bullets[i]->bullet_draw(window);
+        bullets[i]->bullet_shooting();
+    }
+
+}
+
 
 
 
