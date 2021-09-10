@@ -2,6 +2,7 @@
 #include "SpaceShip.h"
 #include "Map.h"
 #include "Bullet.h"
+#include "Enemies.h"
 
 int main()
 {
@@ -14,6 +15,7 @@ int main()
     SpaceShip spaceship(sf::Vector2f(width/2,height-42));
     Map map1(position_map);
     Bullet bullet(sf::Vector2f(1000, 1000));
+    Enemies enemies(sf::Vector2f(200.0, 300.0));
   
     window.setFramerateLimit(60);
     sf::Clock clock;
@@ -29,8 +31,11 @@ int main()
         sf::Time elapsed = clock.restart();
         
         spaceship.SpaceShip_animate(elapsed);
+        //enemies.enemies_bounds(window,elapsed);
         window.clear();
         window.draw(map1);
+        enemies.enemies_animation(window, elapsed);
+        //enemies.enemies_draw(window);
 
         bullet.player_shooting(window, spaceship);
         spaceship.SpaceShip_draw(window);

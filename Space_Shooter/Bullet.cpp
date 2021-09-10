@@ -12,7 +12,7 @@ Bullet::Bullet(sf::Vector2f position_):position(position_)
 	bullet.setTexture(bullet_texture);
 	bullet.setOrigin(bullet.getGlobalBounds().width / 2, bullet.getGlobalBounds().height / 2);
 	bullet.setPosition(position);
-	std::cout <<"BULLET"<< bullet.getPosition().x <<" "<< bullet.getPosition().y << std::endl;
+    std::cout <<"BULLET"<< bullet.getPosition().x <<" "<< bullet.getPosition().y << std::endl;
 }
 
 void Bullet::bullet_draw(sf::RenderWindow& window)

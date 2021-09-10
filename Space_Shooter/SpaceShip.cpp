@@ -70,27 +70,3 @@ const sf::Vector2f SpaceShip::getPosition()
 	return ship.getPosition();
 }
 
-
-
-//void SpaceShip::shipShooting(std::vector<Bullet*>& bullets, sf::RenderWindow& window)
-//{
-//
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-//	{
-//		isShooting = true;
-//	}
-//	if (isShooting == true) {
-//
-//		bullets.push_back(new Bullet(position));
-//		isShooting = false;
-//	}
-//	for (int i = 0; i < bullets.size(); ++i)
-//	{
-//		bullets[i]->bullet_draw(window);
-//		bullets[i]->bullet_shooting();
-//	}
-//
-//}
-
-
-
