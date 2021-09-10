@@ -45,7 +45,12 @@ void Bullet::player_shooting(sf::RenderWindow& window,SpaceShip spaceship)
         bullets[i]->bullet_draw(window);
         bullets[i]->bullet_shooting();
     }
+   
+}
 
+const sf::FloatRect Bullet::getBounds()
+{
+    return bullet.getGlobalBounds();
 }
 
 

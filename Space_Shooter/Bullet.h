@@ -17,11 +17,12 @@ class Bullet
 		int shootTime = 20;
 		
 	public:
+	
 	Bullet(sf::Vector2f position_);
 	void bullet_draw(sf::RenderWindow& window);
 	void bullet_shooting ();
 	void player_shooting(sf::RenderWindow& window,SpaceShip spaceship);
-
+	const sf::FloatRect getBounds();
 	
 };
 
