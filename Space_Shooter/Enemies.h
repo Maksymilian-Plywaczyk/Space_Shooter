@@ -3,6 +3,9 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include "SpaceShip.h"
+#include "Bullet.h"
+
 class Enemies
 {
 private:		
@@ -19,7 +22,8 @@ public:
 	Enemies(sf::Vector2f position_);
 	void enemies_draw(sf::RenderWindow& window);
 	void enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed);
-	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed);
+	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed,SpaceShip ship);
+	const sf::FloatRect getBounds();
 
 
 
