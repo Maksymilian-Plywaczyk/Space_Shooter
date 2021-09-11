@@ -35,9 +35,9 @@ void Enemies::enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed)
 	enemies.move(enemies_speed_x * elapsed.asSeconds(), enemies_speed_y * elapsed.asSeconds());
 }
 
-void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship)
+void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship, Bullet bullet)
 {
-	std::vector<Bullet*> bullet;
+	
 	if (EnemiesSpawnTime < 50)
 	{
 		EnemiesSpawnTime++;
@@ -62,16 +62,14 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 			enemies_.erase(enemies_.begin() + i);
 			std::cout << "KOLIZJA STATKU Z PRZECIWNIKIEM" << std::endl;
 		}
-		for (auto k = 0; k< bullet.size(); k++)
-		{
-			if (enemies_[i]->enemies.getGlobalBounds().intersects(bullet[k]->getBounds()))
+			if (enemies_[i]->enemies.getGlobalBounds().intersects(bullet.getBounds()))
 			{
 				enemies_.erase(enemies_.begin() + i);
-				bullet.erase(bullet.begin() + k);
+				//bullet.erase(bullet.begin());
 				std::cout <<"KOLIZJA POCISKU Z PRZECIWNIKIEM" << std::endl;
-				break;
+				
 			}
-		}
+
 		
 	}
 	for (auto i = 0; i <enemies_.size(); i++)
