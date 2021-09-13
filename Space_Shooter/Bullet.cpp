@@ -17,12 +17,14 @@ Bullet::Bullet(sf::Vector2f position_):position(position_)
     {
         this->speed_bullet = 10;
         this->shootTime = 20;
+        this->bulletDamage = 3;
 
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
         this->speed_bullet = 5;
         this->shootTime = 30;
+        this->bulletDamage = 5;
     }
 }
 
@@ -74,6 +76,7 @@ void Bullet::player_shooting(sf::RenderWindow& window,SpaceShip spaceship)
             itr= bullets.erase(itr);
             std::cout << "Usunieto kule" << std::endl;
         }
+    
         else {
             (*itr)->bullet_draw(window);
             (*itr)->bullet_shooting();

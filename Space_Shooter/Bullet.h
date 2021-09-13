@@ -5,6 +5,7 @@
 #include <memory>
 #include "SpaceShip.h"
 
+
 class Bullet
 {
 	private:
@@ -18,6 +19,7 @@ class Bullet
 		bool isShooting2 = false;
 		int shootTime1 = 0;
 		int shootTime = 0;
+		int bulletDamage = 0;
 		
 	public:
 	
