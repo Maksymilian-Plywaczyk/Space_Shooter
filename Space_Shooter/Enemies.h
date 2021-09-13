@@ -6,6 +6,7 @@
 #include "SpaceShip.h"
 #include "Bullet.h"
 
+
 class Enemies
 {
 private:		
@@ -16,13 +17,16 @@ private:
 	 int enemies_speed_y = 100;
 	 std::vector<Enemies*>enemies_;
 	 int EnemiesSpawnTime = 0;
+	 int HP;
+	 int HPMax;
+
 
 
 public:
 	Enemies(sf::Vector2f position_);
 	void enemies_draw(sf::RenderWindow& window);
 	void enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed);
-	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed,SpaceShip ship, Bullet bullet);
+	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed,SpaceShip ship,Bullet bullet);
 	const sf::FloatRect getBounds();
 
 
