@@ -66,24 +66,36 @@ void Bullet::player_shooting(sf::RenderWindow& window,SpaceShip spaceship)
         bullets2.push_back(new Bullet(sf::Vector2f(spaceship.getPosition().x + 20, spaceship.getPosition().y)));
         isShooting2 = false;
     }
-    unsigned counter = 0;
-    for (size_t i = 0; i < bullets.size();i++)
+    for (auto itr = bullets.begin(); itr != bullets.end();)
     {
-      
-        if (bullets[i]->getPos().y<window.getPosition().y)
+
+        if ((*itr)->getPos().y < window.getPosition().y)
         {
-            //bullets.erase(bullets.begin() + counter);
+            itr= bullets.erase(itr);
             std::cout << "Usunieto kule" << std::endl;
         }
-        bullets[i]->bullet_draw(window);
-        bullets[i]->bullet_shooting();
-    }
-    for (size_t j = 0; j < bullets2.size(); j++)
-    {
-        bullets2[j]->bullet_shooting();
-        bullets2[j]->bullet_draw(window);
-    }
+        else {
+            (*itr)->bullet_draw(window);
+            (*itr)->bullet_shooting();
+            itr++;
 
+        }
+    }
+    for (auto itr = bullets2.begin(); itr != bullets2.end();)
+    {
+
+        if ((*itr)->getPos().y < window.getPosition().y)
+        {
+            itr = bullets2.erase(itr);
+            std::cout << "Usunieto kule" << std::endl;
+        }
+        else {
+            (*itr)->bullet_draw(window);
+            (*itr)->bullet_shooting();
+            itr++;
+
+        }
+    }
 
    
 }
