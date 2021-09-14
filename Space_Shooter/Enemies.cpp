@@ -35,34 +35,25 @@ void Enemies::enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed)
 	enemies.move(enemies_speed_x * elapsed.asSeconds(), enemies_speed_y * elapsed.asSeconds());
 }
 
-void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship,Bullet bullet )
+void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship, std::vector<Bullet*>&bullets, std::vector<Bullet*>& bullets2)
 {
-	
+
 	if (EnemiesSpawnTime < 50)
 	{
 		EnemiesSpawnTime++;
 	}
 	if (EnemiesSpawnTime >= 50)
 	{
-		
-		sf::Vector2f position(std::rand() % (window.getSize().x),0);
+
+		sf::Vector2f position(std::rand() % (window.getSize().x), 0);
 		enemies_.push_back(new Enemies(position));
 		EnemiesSpawnTime = 0;
 	}
-	for (auto itr = enemies_.begin(); itr!=enemies_.end();)
+	for (auto itr = enemies_.begin(); itr != enemies_.end();)
 	{
-	
+
 		(*itr)->enemies_bounds(window, elapsed);
 		if ((*itr)->enemies.getPosition().y >= window.getSize().y - (*itr)->enemies.getGlobalBounds().height)
-		{
-			itr = enemies_.erase(itr);
-		}
-		if ((*itr) ->enemies.getGlobalBounds().intersects(ship.getBounds()))
-		{
-			itr = enemies_.erase(itr);
-			std::cout << "KOLIZJA STATKU Z PRZECIWNIKIEM" << std::endl;
-		}
-		if ((*itr)->enemies.getGlobalBounds().intersects(bullet.getBounds()))
 		{
 			itr = enemies_.erase(itr);
 		}
@@ -71,12 +62,63 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 			(*itr)->enemies_draw(window);
 			itr++;
 		}
-	
-		
 	}
-	for (auto i = 0; i <enemies_.size(); i++)
+	for (auto itr = enemies_.begin(); itr != enemies_.end();)
 	{
-		enemies_[i]->enemies_draw(window);
+		if ((*itr)->enemies.getGlobalBounds().intersects(ship.getBounds()))
+		{
+			itr = enemies_.erase(itr);
+			std::cout << "KOLIZJA STATKU Z PRZECIWNIKIEM" << std::endl;
+		}
+		else
+		{
+			(*itr)->enemies_draw(window);
+			itr++;
+		}
+	}
+	for (auto itr = enemies_.begin(); itr != enemies_.end();)
+	{
+		bool czyUsunietoPrzeciwnika = false;
+		for (auto itr2 = bullets.begin(); itr2 != bullets.end();)
+		{
+			if ((*itr)->getBounds().intersects((*itr2)->getBounds()))
+			{
+				itr = enemies_.erase(itr);
+				itr2 = bullets.erase(itr2);
+				std::cout << "Usunieto przeciwnika" << std::endl;
+				czyUsunietoPrzeciwnika = true;
+				break;
+			}
+			else {
+				(*itr)->enemies_draw(window);
+				itr2++;
+			}
+		}
+		if (!czyUsunietoPrzeciwnika) {
+			itr++;
+		}
+	}
+	for (auto itr = enemies_.begin(); itr != enemies_.end();)
+	{
+		bool czyUsunietoPrzeciwnika = false;
+		for (auto itr2 = bullets2.begin(); itr2 != bullets2.end();)
+		{
+			if ((*itr)->getBounds().intersects((*itr2)->getBounds()))
+			{
+				itr = enemies_.erase(itr);
+				itr2 = bullets2.erase(itr2);
+				std::cout << "Usunieto przeciwnika" << std::endl;
+				czyUsunietoPrzeciwnika = true;
+				break;
+			}
+			else {
+				(*itr)->enemies_draw(window);
+				itr2++;
+			}
+		}
+		if (!czyUsunietoPrzeciwnika) {
+			itr++;
+		}
 	}
 }
 

@@ -26,7 +26,7 @@ public:
 	Enemies(sf::Vector2f position_);
 	void enemies_draw(sf::RenderWindow& window);
 	void enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed);
-	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed,SpaceShip ship,Bullet bullet);
+	void enemies_animation(sf::RenderWindow& window, sf::Time& elapsed,SpaceShip ship,std::vector<Bullet*>&bullets, std::vector<Bullet*>& bullets2);
 	const sf::FloatRect getBounds();
 
 
