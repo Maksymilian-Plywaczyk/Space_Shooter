@@ -13,6 +13,9 @@ Enemies::Enemies(sf::Vector2f position_):position(position_)
 	enemies.setOrigin(enemies.getGlobalBounds().width / 2, enemies.getGlobalBounds().height / 2);
 	enemies.setPosition(position);
 	std::cout << "Enemies" << enemies.getPosition().x << " " <<	enemies.getPosition().y << std::endl;	
+	
+	this->HPMax = rand() % 10 + 1;
+	this->HP = this->HPMax;
 }
 
 void Enemies::enemies_draw(sf::RenderWindow& window)
@@ -69,6 +72,8 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 		{
 			itr = enemies_.erase(itr);
 			std::cout << "KOLIZJA STATKU Z PRZECIWNIKIEM" << std::endl;
+			ship.HP--;
+			std::cout << ship.HP<< std::endl;
 		}
 		else
 		{
@@ -83,7 +88,14 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 		{
 			if ((*itr)->getBounds().intersects((*itr2)->getBounds()))
 			{
-				itr = enemies_.erase(itr);
+				if ((*itr)->HP <= 1)
+				{
+					itr = enemies_.erase(itr);
+				}
+				else
+				{
+					(*itr)->HP--;
+				}
 				itr2 = bullets.erase(itr2);
 				std::cout << "Usunieto przeciwnika" << std::endl;
 				czyUsunietoPrzeciwnika = true;
@@ -105,7 +117,15 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 		{
 			if ((*itr)->getBounds().intersects((*itr2)->getBounds()))
 			{
-				itr = enemies_.erase(itr);
+				if ((*itr)->HP <= 1)
+				{
+					itr = enemies_.erase(itr);
+				}
+				else
+				{
+					(*itr)->HP--;
+				}
+			
 				itr2 = bullets2.erase(itr2);
 				std::cout << "Usunieto przeciwnika" << std::endl;
 				czyUsunietoPrzeciwnika = true;

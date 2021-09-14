@@ -15,8 +15,10 @@ SpaceShip::SpaceShip(sf::Vector2f position_) :position( position_){
 	ship.setOrigin(ship.getGlobalBounds().width / 2, ship.getGlobalBounds().height / 2);
 
 	std::cout <<"Origin x: "<< ship.getOrigin().x<<"Origin y:"<< ship.getOrigin().y << std::endl;
-	ship.setPosition(position_);
+	ship.setPosition(position);
 	std::cout << spaceship_texture.getSize().x << spaceship_texture.getSize().y << std::endl;
+	this->HPMax = 10;
+	this->HP = this->HPMax;
 }
 
 void SpaceShip::SpaceShip_animate(sf::Time& elapsed)

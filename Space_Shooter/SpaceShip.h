@@ -16,10 +16,9 @@ private:
 	const  int speed_of_direction_x = 400;
 	const  int speed_of_direction_y = 400;
 	bool isShooting=false;
-	
-
 public:
-	
+	int HP;
+	int HPMax;
 	SpaceShip(sf::Vector2f position_);
 	void SpaceShip_animate(sf::Time& elapsed);
 	void SpaceShip_draw(sf::RenderWindow& window);

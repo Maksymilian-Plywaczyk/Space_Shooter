@@ -13,16 +13,18 @@ private:
 	sf::Sprite enemies;
 	sf::Texture enemies_texture;
 	sf::Vector2f position;
-	 int enemies_speed_x = 0;
+	 int enemies_speed_x = 5;
 	 int enemies_speed_y = 100;
 	 std::vector<Enemies*>enemies_;
 	 int EnemiesSpawnTime = 0;
-	 int HP;
-	 int HPMax;
 
+	 //TODO
+	 // PORUSZANIE SIE W INNE STRONY
 
 
 public:
+	int HP;
+	int HPMax;
 	Enemies(sf::Vector2f position_);
 	void enemies_draw(sf::RenderWindow& window);
 	void enemies_bounds(sf::RenderWindow& window,sf::Time&elapsed);
