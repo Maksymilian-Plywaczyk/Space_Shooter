@@ -14,10 +14,12 @@ private:
 	int meteorite_speed_y = 200;
 	std::vector<Meteorite*>meteorites;
 	int meteorite_spawn_time = 0;
+	int meteoriteHP = 0;
+	int meteoriteHPMax;
 public:
 	Meteorite(sf::Vector2f pos);
 	void meteorite_draw(sf::RenderWindow& window);
 	void meteorite_update(sf::RenderWindow& window, sf::Time& elapsed);
-	void meteorite_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship);
+	void meteorite_animation(sf::RenderWindow& window, sf::Time& elapsed, SpaceShip ship, std::vector<Bullet*>& bullets, std::vector<Bullet*>& bullets2);
 };
 

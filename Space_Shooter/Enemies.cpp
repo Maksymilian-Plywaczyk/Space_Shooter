@@ -140,6 +140,7 @@ void Enemies::enemies_animation(sf::RenderWindow& window, sf::Time& elapsed, Spa
 			itr++;
 		}
 	}
+	ship.playerKilling(window);
 }
 
 const sf::FloatRect Enemies::getBounds()

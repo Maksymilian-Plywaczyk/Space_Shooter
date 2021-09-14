@@ -25,6 +25,6 @@ public:
 	const sf::FloatRect getBounds();
 	const sf::Vector2f getPosition();
 	//void shipShooting(std::vector<Bullet*>&bullets,sf::RenderWindow& window);
-
+	void playerKilling(sf::RenderWindow& window);
 };
 

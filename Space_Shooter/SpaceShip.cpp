@@ -17,7 +17,7 @@ SpaceShip::SpaceShip(sf::Vector2f position_) :position( position_){
 	std::cout <<"Origin x: "<< ship.getOrigin().x<<"Origin y:"<< ship.getOrigin().y << std::endl;
 	ship.setPosition(position);
 	std::cout << spaceship_texture.getSize().x << spaceship_texture.getSize().y << std::endl;
-	this->HPMax = 10;
+	this->HPMax = 1;
 	this->HP = this->HPMax;
 }
 
@@ -70,5 +70,14 @@ const sf::FloatRect SpaceShip::getBounds()
 const sf::Vector2f SpaceShip::getPosition()
 {
 	return ship.getPosition();
+}
+
+void SpaceShip::playerKilling(sf::RenderWindow& window)
+{
+	if (this->HP < 1)
+	{
+		window.close();
+		std::cout << "THANKS FOR PLAYING!!" << std::endl;
+	}
 }
 
