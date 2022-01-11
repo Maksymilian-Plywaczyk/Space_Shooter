@@ -34,7 +34,7 @@ void GameWindow::GameLoop()
         window.draw(map1);
 
         bullet.player_shooting(window, spaceship);
-        meteorite.meteorite_animation(window, elapsed, spaceship);
+        meteorite.meteorite_animation(window, elapsed, spaceship,bullet.bullets,bullet.bullets2);
         enemies.enemies_animation(window, elapsed, spaceship, bullet.bullets, bullet.bullets2);
 
 
