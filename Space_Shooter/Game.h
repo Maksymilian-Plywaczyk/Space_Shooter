@@ -6,13 +6,13 @@
 class Game
 {
 public:
-	Game();
-	void run();
-	void start();
-	void iMenu();
-	void uPollEventsMenu();
 	sf::RenderWindow* windowMenu;
 	Menu* menu;
-
+	void iMenu();
+	void run();
+	void start();
+	void uPollEventsMenu();
+	Game();
+	~Game();
 };
 

@@ -4,12 +4,10 @@ Game::Game()
 {
     this->iMenu();
 }
-void Game::run()
+Game::~Game()
 {
-    GameWindow game;
-    game.GameLoop();
+    delete this->windowMenu;
 }
-
 void Game::start()
 {
     while (this->windowMenu)
@@ -17,6 +15,12 @@ void Game::start()
         this->uPollEventsMenu();
     }
 }
+void Game::run()
+{
+    GameWindow game;
+    game.GameLoop();
+}
+
 void Game::iMenu()
 {
     this->windowMenu = new sf::RenderWindow(sf::VideoMode(1000, 1000), "Menu", sf::Style::Close | sf::Style::Titlebar);
@@ -26,13 +30,14 @@ void Game::iMenu()
 }
 void Game::uPollEventsMenu()
 {
-    sf::Event action;
-    while (this->windowMenu->pollEvent(action))
+    
+    sf::Event action1;
+    while (this->windowMenu->pollEvent(action1))
     {
-        switch (action.type)
+        switch (action1.type)
         {
         case sf::Event::KeyReleased:
-            switch (action.key.code)
+            switch (action1.key.code)
             {
             case sf::Keyboard::Up:
                 menu->Up();
@@ -84,8 +89,7 @@ void Game::uPollEventsMenu()
         }
     }
 
-    this->windowMenu->clear();
-
+    windowMenu->clear();
     menu->draw(*windowMenu);
 
     windowMenu->display();
