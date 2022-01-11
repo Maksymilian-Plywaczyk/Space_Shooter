@@ -68,3 +68,4 @@ void Menu::Down()
         menu[Ind].setFillColor(sf::Color::Red);
     }
 }
+

@@ -13,6 +13,7 @@ public:
     Menu(float width, float height);
     sf::Texture textureMenu;
     sf::Sprite spriteMenu;
+    sf::RenderWindow *windowMenu;
 
     void initializeSpriteMenu();
     void draw(sf::RenderWindow& window);
@@ -22,6 +23,7 @@ public:
     int Ind;
     sf::Font F;
     sf::Text menu[3];
+  
 
 };
 
